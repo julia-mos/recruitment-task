@@ -6,7 +6,10 @@ class Login extends Component {
     super();
     this.state={
       username:"",
-      password:""
+      password:"",
+      wantToLogin:true,
+      message:"Don't have an account? Register now",
+      title: "Log in"
     }
   }
   handlePasswordChange = (e)=>{
@@ -18,14 +21,20 @@ class Login extends Component {
   handleSubmit = (e) =>{
     e.preventDefault();
   }
+  handleChangingAction = () =>{
+    this.state.wantToLogin ?
+    this.setState({wantToLogin : false, message: "Have an account? Log in now", title:"Register"})
+    :
+    this.setState({wantToLogin : true, message: "Don't have an account? Register now",title:"Log in"})
+  }
   render() {
     return (
       <div>
-      Log in <br/>
+      {this.state.title} <br/>
       <input type="text" value={this.state.username} placeholder="username" onChange={this.handleUsernameChange}/>
       <input type="password" value={Base64.decode(this.state.password)} placeholder="password" onChange={this.handlePasswordChange}/>
       <button type="submit" onClick={this.handleSubmit}>Login</button>
-      <button onClick={this.props.changeAction}>Don't have an account? Register now</button>
+      <button onClick={this.handleChangingAction}>{this.state.message}</button>
       </div>
     );
   }
