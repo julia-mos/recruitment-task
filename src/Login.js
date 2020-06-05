@@ -13,6 +13,22 @@ class Login extends Component {
       warning:""
     }
   }
+
+  checkRespond = (respond) =>{
+    if(wantToLogin){
+      if(respond)
+        this.props.handleLogging(this.state.username)
+      else
+        this.setState({warning:"incorrect username or password",username:"", password:""})  
+    }
+    else{
+      if(respond)
+        this.setState({wantToLogin:true})
+      else
+        this.setState({warning:"user with this login exists", username:"", password:""})  
+    }
+  }
+
   handlePasswordChange = (e) => {
     this.setState({ password: Base64.encode(e.target.value), warning:"" })
   }
@@ -21,10 +37,9 @@ class Login extends Component {
   }
   handleSubmit = (e) => {
     e.preventDefault();
-    if(this.state.username!=="" && this.state.password !=="")
-    {
-      if(this.props.handleAction(this.state.wantToLogin,this.state.username,this.state.password))
-        console.log("git")
+    if(this.state.username!=="" && this.state.password !==""){
+      let respond =this.props.handleAction(this.state.wantToLogin,this.state.username,this.state.password)
+      checkRespond(respond)
     }
     else
     this.setState({warning: "username and password cannot be empty"})

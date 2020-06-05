@@ -8,7 +8,7 @@ class App extends Component {
     this.state={
       users:[],
       logged:false,
-      register:false
+      loggedUser:null
     }
     //Użytkownicy powinni logować się poprzez połączenie z bazą danych. Tam trzymane hasła są bezpieczne, 
     //ponieważ nie ma ich po stronie frontednu oraz są szyfrowane. Trzymanie danych do logowania po
@@ -31,6 +31,9 @@ class App extends Component {
       }
       else return false;
     }
+  }
+  handleLogging = (username) =>{
+    this.setState({logged:true, loggedUser:username})
   } 
   render() {
     return (
