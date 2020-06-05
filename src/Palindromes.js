@@ -8,4 +8,4 @@ class Palindromes extends Component {
   }
 }
 
-export default componentName;
+export default Palindromes;

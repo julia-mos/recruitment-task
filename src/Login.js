@@ -10,39 +10,39 @@ class Login extends Component {
       wantToLogin: true,
       message: "Don't have an account? Register now",
       title: "Login",
-      warning:""
+      warning: ""
     }
   }
 
-  checkRespond = (respond) =>{
-    if(wantToLogin){
-      if(respond)
+  checkRespond = (respond) => {
+    if (this.state.wantToLogin) {
+      if (respond)
         this.props.handleLogging(this.state.username)
       else
-        this.setState({warning:"incorrect username or password",username:"", password:""})  
+        this.setState({ warning: "incorrect username or password", username: "", password: "" })
     }
-    else{
-      if(respond)
-        this.setState({wantToLogin:true})
+    else {
+      if (respond)
+        this.setState({ wantToLogin: true, username: "", password: "", title: "Login", message: "Don't have an account? Register now" })
       else
-        this.setState({warning:"user with this login exists", username:"", password:""})  
+        this.setState({ warning: "user with this login exists", username: "", password: "" })
     }
   }
 
   handlePasswordChange = (e) => {
-    this.setState({ password: Base64.encode(e.target.value), warning:"" })
+    this.setState({ password: Base64.encode(e.target.value), warning: "" })
   }
   handleUsernameChange = (e) => {
-    this.setState({ username: e.target.value,warning:"" })
+    this.setState({ username: e.target.value, warning: "" })
   }
   handleSubmit = (e) => {
     e.preventDefault();
-    if(this.state.username!=="" && this.state.password !==""){
-      let respond =this.props.handleAction(this.state.wantToLogin,this.state.username,this.state.password)
-      checkRespond(respond)
+    if (this.state.username !== "" && this.state.password !== "") {
+      let respond = this.props.handleAction(this.state.wantToLogin, this.state.username, this.state.password)
+      this.checkRespond(respond)
     }
     else
-    this.setState({warning: "username and password cannot be empty"})
+      this.setState({ warning: "username and password cannot be empty", username: "", password: "" })
   }
   handleChangingAction = () => {
     this.state.wantToLogin ?
@@ -52,7 +52,7 @@ class Login extends Component {
         wantToLogin: false,
         message: "Have an account? Log in now",
         title: "Register",
-        warning:""
+        warning: ""
       })
       :
       this.setState({
@@ -60,18 +60,20 @@ class Login extends Component {
         password: "", wantToLogin: true,
         message: "Don't have an account? Register now",
         title: "Login",
-        warning:""
+        warning: ""
       })
   }
   render() {
     return (
-      <div>
-        {this.state.title} <br />
-        <input type="text" value={this.state.username} placeholder="username" onChange={this.handleUsernameChange} />
-        <input type="password" value={Base64.decode(this.state.password)} placeholder="password" onChange={this.handlePasswordChange} />
-        <button type="submit" onClick={this.handleSubmit}>{this.state.title}</button>
-        <button onClick={this.handleChangingAction}>{this.state.message}</button>
-        <p color="red">{this.state.warning}</p>
+      <div className="wrapper">
+        <div className="formContainer">
+        <h1>{this.state.title}</h1>
+          <input className="formInput" type="text" value={this.state.username} placeholder="username" onChange={this.handleUsernameChange} />
+          <input className="formInput" type="password" value={Base64.decode(this.state.password)} placeholder="password" onChange={this.handlePasswordChange} />
+          <button className="formBtn" type="submit" onClick={this.handleSubmit}>{this.state.title}</button>
+          <button className="formLink" onClick={this.handleChangingAction}><span>{this.state.message}</span></button>
+          <p className="formWarning">{this.state.warning}</p>
+        </div>
       </div>
     );
   }

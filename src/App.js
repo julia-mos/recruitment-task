@@ -17,14 +17,15 @@ class App extends Component {
   }
   handleAction = (login,username,password) =>{
     let users=this.state.users
-    if(login){
-      if(this.state.users.find(x=>x.username===username).password===password)
-        return true;
-      else
+    let userObject=this.state.users.find(x=>x.username===username);
+    if(login){      
+      if(userObject === undefined || userObject.password!==password)
         return false;
+      else if (userObject.password===password)
+        return true;
     }
     else{
-      if(this.state.users.find(x=>x.username===username)===undefined){
+      if(userObject===undefined){
       users.push({"username":username, "password":password})
       this.setState({users: users})
       return true;
@@ -40,7 +41,7 @@ class App extends Component {
       <div>
         {
         !this.state.logged?
-          <Login handleAction={this.handleAction}/>
+          <Login handleLogging={this.handleLogging} handleAction={this.handleAction}/>
         :
         <Palindromes />
         }
