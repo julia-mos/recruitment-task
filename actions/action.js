@@ -1,4 +1,4 @@
 export const palindromesFetched = (palindromes) => ({
-    type: 'FETCH_PALINDROMS_SUCCESS',
+    type: 'FETCH_PALINDROMES_SUCCESS',
     palindromes
   });
