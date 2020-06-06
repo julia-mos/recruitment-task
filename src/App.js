@@ -17,10 +17,7 @@ class App extends Component {
     //stronie frontendu nie jest bezpiecznym, ani trwałym rozwiązaniem - dane znikają po ponownym uruchomieniu projektu
     //a także trzymanie ich lokalnie (w state komponentu lub store reduxa) umożliwia do nich dostęp poprzez narzędzia developerskie reacta.
   }
-  componentDidMount = () =>{
-    console.log(this.props)
-   // this.props.palindromesFetched();
-  }
+
   handleAction = (login,username,password) =>{
     let users=this.state.users
     let userObject=this.state.users.find(x=>x.username===username);
@@ -43,7 +40,6 @@ class App extends Component {
     this.setState({logged:true, loggedUser:username})
   } 
   render() {
-    console.log(this.props)
     return (
       <div>
         {
@@ -66,7 +62,5 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = { palindromesAdded };
 
 export const AppContainer = connect(mapStateToProps, mapDispatchToProps)(App);
-
-
 
 export default App;
