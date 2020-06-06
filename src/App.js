@@ -4,6 +4,7 @@ import Palindromes from "./Palindromes"
 import { connect } from "react-redux";
 import { palindromesAdded } from "./actions/action";
 import Check from "./checkString"
+import { store } from './store';
 
 class App extends Component {
   constructor() {
@@ -42,7 +43,11 @@ class App extends Component {
   }
 
   handleAddingString = (str) => {
-    this.props.dispatchAddToList(str, Check(str));
+    let data={
+      text:str,
+      isPalindrome: Check(str)
+    }
+    this.props.palindromesAdded(data)
   }
 
   render() {
@@ -65,11 +70,7 @@ const mapStateToProps = (state) => {
   }
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return{
-    dispatchAddToList: () => dispatch(palindromesAdded())
-  }
-};
+const mapDispatchToProps = {palindromesAdded }
 
 export const AppContainer = connect(mapStateToProps, mapDispatchToProps)(App);
 
