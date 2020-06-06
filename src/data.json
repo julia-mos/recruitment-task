@@ -1,6 +1,22 @@
 [
     {
-    "text" : "test",
-    "isPalindrome" : "false"
+        "text": "test",
+        "isPalindrome": false
+    },
+    {
+        "text": "kobyła ma mały bok",
+        "isPalindrome": true
+    },
+    {
+        "text": "kajak",
+        "isPalindrome": true
+    },
+    {
+        "text": "react",
+        "isPalindrome": false
+    },
+    {
+        "text": "ja tutaj",
+        "isPalindrome": true
     }
 ]
