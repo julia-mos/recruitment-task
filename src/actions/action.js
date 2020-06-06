@@ -1,4 +1,7 @@
-export const palindromesAdded = (palindromes) => ({
+export const palindromesAdded = (string, isPalindrome) => ({
     type: 'ADD_PALINDROME_SUCCESS',
-    palindromes
+    data:{
+      string: string,
+      isPalindrome: isPalindrome
+    }
   });

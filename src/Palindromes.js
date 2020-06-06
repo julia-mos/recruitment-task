@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PalindromesList from "./PalindromesList"
-import Check from "./checkString"
+
 
 class Palindromes extends Component {
   constructor(props){
@@ -12,7 +12,8 @@ class Palindromes extends Component {
     this.setState({inputValue:e.target.value})
   }
   handleSubmitClick = (e)=>{
-    e.preventDeafult()
+    e.preventDefault()
+    this.props.addNewString(this.state.inputValue)
   }
   render() {
     return (

@@ -3,4 +3,4 @@ import {palindromes} from "./palindrome"
 
 export default combineReducers({
     palindromes
-  });
+});

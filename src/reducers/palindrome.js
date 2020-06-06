@@ -1,7 +1,8 @@
 export const palindromes = (state = [], action) => {
   switch (action.type) {
-    case 'ADD_PALINDROMES_SUCCESS':
-      return state.concat([action.payload])
+    case 'ADD_PALINDROME_SUCCESS':
+      console.log("jestem")
+      return state.concat([action.data])
     default:
       return state
   }
