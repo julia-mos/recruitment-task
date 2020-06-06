@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PalindromesList from "./PalindromesList"
+import Check from "./checkString"
 
 class Palindromes extends Component {
   constructor(props){
