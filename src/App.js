@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Login from "./Login"
 import Palindromes from "./Palindromes"
 import { connect } from "react-redux";
-import { palindromesFetched } from "./actions";
+import { palindromesAdded } from "./actions/action";
 
 class App extends Component {
   constructor(){
@@ -18,7 +18,8 @@ class App extends Component {
     //a także trzymanie ich lokalnie (w state komponentu lub store reduxa) umożliwia do nich dostęp poprzez narzędzia developerskie reacta.
   }
   componentDidMount = () =>{
-    this.props.palindromesFetched();
+    console.log(this.props)
+   // this.props.palindromesFetched();
   }
   handleAction = (login,username,password) =>{
     let users=this.state.users
@@ -42,6 +43,7 @@ class App extends Component {
     this.setState({logged:true, loggedUser:username})
   } 
   render() {
+    console.log(this.props)
     return (
       <div>
         {
@@ -57,10 +59,14 @@ class App extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    palindromesObject: state.palindromes
+    palindromes: state.palindromes
   }
 };
-const mapDispatchToProps = { palindromesFetched };
+
+const mapDispatchToProps = { palindromesAdded };
 
 export const AppContainer = connect(mapStateToProps, mapDispatchToProps)(App);
+
+
+
 export default App;

@@ -1,4 +1,4 @@
-export const palindromesFetched = (palindromes) => ({
-    type: 'FETCH_PALINDROMES_SUCCESS',
+export const palindromesAdded = (palindromes) => ({
+    type: 'ADD_PALINDROME_SUCCESS',
     palindromes
   });
