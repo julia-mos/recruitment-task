@@ -4,5 +4,5 @@ const Check = (string) =>{
     let reverseString = initialString.split("").reverse().join(""); 
     return reverseString === initialString;
   }
-
-  export default Check;
+  
+module.exports=Check
