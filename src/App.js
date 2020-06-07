@@ -4,7 +4,6 @@ import Palindromes from "./Palindromes"
 import { connect } from "react-redux";
 import { palindromesAdded } from "./actions/action";
 import Check from "./checkString"
-import { store } from './store';
 
 class App extends Component {
   constructor() {
@@ -70,7 +69,7 @@ const mapStateToProps = (state) => {
   }
 };
 
-const mapDispatchToProps = {palindromesAdded }
+const mapDispatchToProps = {palindromesAdded}
 
 export const AppContainer = connect(mapStateToProps, mapDispatchToProps)(App);
 

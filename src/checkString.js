@@ -1,4 +1,4 @@
-function Check(string) {
+const Check = (string) =>{
     let regex = /[\W_]/g;
     let initialString = string.toLowerCase().replace(regex, "");
     let reverseString = initialString.split("").reverse().join(""); 
