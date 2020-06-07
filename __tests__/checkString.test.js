@@ -1,0 +1,1 @@
+const Check = require('../src/checkString')
